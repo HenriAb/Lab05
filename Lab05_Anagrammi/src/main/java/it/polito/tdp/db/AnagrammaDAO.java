@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import it.polito.tdp.model.Anagramma;
 
 public class AnagrammaDAO {
 	
@@ -13,29 +12,29 @@ public class AnagrammaDAO {
 		
 		String sql = "SELECT nome "
 				+ "FROM parola "
-				+ "WHERE nome = '?'";
+				+ "WHERE nome = ?";
 		
 		try {
 			Connection conn = DBConnect.getConnection();
 			
 			PreparedStatement st = conn.prepareStatement(sql);
 			
-			st.setString(0, anagramma);
+			st.setString(1, anagramma);
 			
 			ResultSet rs = st.executeQuery();
 			
-			while(rs.next()) {
+			if(rs.next()) {
 				conn.close();
-				Anagramma a = new Anagramma(rs.getString("nome"), true);
 				return true;
+			}
+			else {
+				conn.close();
+				return false;
 			}
 
 		}catch(SQLException sqle) {
-			//throw new RuntimeException();
-			return false;
+			throw new RuntimeException(sqle);
 		}
-
-		return false;
 		
 	}
 	

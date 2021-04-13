@@ -46,25 +46,16 @@ public class FXMLController {
     	
     	permutazioni = this.model.anagrammi(input);
     	if(permutazioni.size() != 0) {
-//    		for(String s : permutazioni) {
-//    			if(this.model.isCorrect(s)) {
-//    				corrette.add(s);
-//    			}
-//    			else {
-//    				errate.add(s);
-//    			}
-//    		}
-    		
+
+    	
+    	for(String s : permutazioni) {
+    		if(this.model.isCorrect(s)) {
+    			corrette.add(s);
+    		}
+    		else {
+    			errate.add(s);
+    		}
     	}
-    	
-    	//corrette = this.model.corrette
-    	
-    	/**/
-    	//this.txtOutputCorretti.setText(this.model.getCorrette().toString());
-    	//this.txtOutputErrati.setText(this.model.getErrate().toString());
-    	
-    	corrette = this.model.getCorrette();
-    	errate = this.model.getErrate();
     	String cor = "";
     	String err = "";
     	for(String s : corrette ) {
@@ -75,6 +66,7 @@ public class FXMLController {
     	}
     	this.txtOutputCorretti.setText(cor);
     	this.txtOutputErrati.setText(err);
+    	}
     }
 
     @FXML

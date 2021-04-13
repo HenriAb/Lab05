@@ -11,14 +11,6 @@ public class Model {
 	List<String> corrette = new ArrayList<>();
 	List<String> errate = new ArrayList<>();
 	List<String> res = new ArrayList<>();
-	
-	public List<String> getCorrette() {
-		return corrette;
-	}
-
-	public List<String> getErrate() {
-		return errate;
-	}
 
 	public List<String> anagrammi(String input){
 			

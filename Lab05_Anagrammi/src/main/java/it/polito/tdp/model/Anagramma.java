@@ -1,7 +1,9 @@
 package it.polito.tdp.model;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import it.polito.tdp.db.AnagrammaDAO;
 
@@ -10,9 +12,10 @@ public class Anagramma {
 	AnagrammaDAO aDAO = new AnagrammaDAO();
 //	private List<String> corrette = new ArrayList<>();
 //	private List<String> errate = new ArrayList<>();
-	private List<String> res = new ArrayList<>();
-	
-	public List<String> permutazioni(String parola){
+	//private List<String> res = new ArrayList<>();
+	private Set<String> res = new HashSet<>();
+	private Set<String> usate = new HashSet<>();
+	public Set<String> permutazioni(String parola){ // List<String> 
 		
 		permuta("", parola, 0);
 		return res;
@@ -27,6 +30,7 @@ public class Anagramma {
 //				errate.add(parziale);
 //			}
 			res.add(parziale);
+
 		}
 		else {
 			for(int pos=0; pos<lettere.length(); pos++) {
@@ -36,6 +40,7 @@ public class Anagramma {
 				String nuovaLettere = lettere.substring(0, pos) + lettere.substring(pos+1);
 				
 				permuta(nuovaParziale, nuovaLettere, livello+1);
+				
 			}
 		}
 	}

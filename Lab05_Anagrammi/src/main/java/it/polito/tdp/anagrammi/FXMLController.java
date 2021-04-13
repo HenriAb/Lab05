@@ -2,8 +2,10 @@ package it.polito.tdp.anagrammi;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 import it.polito.tdp.model.Anagramma;
 import javafx.event.ActionEvent;
@@ -14,7 +16,8 @@ import javafx.scene.control.TextField;
 public class FXMLController {
 
 	Anagramma model;
-	List<String> res = new ArrayList<>();
+	//List<String> res = new ArrayList<>();
+	Set<String> res = new HashSet<>();
 	
     @FXML
     private ResourceBundle resources;
@@ -38,7 +41,7 @@ public class FXMLController {
     	
     	String input = this.txtInput.getText();
     	
-    	if(input.equals("") || input.matches("[0-9]")) {
+    	if(input.equals("") || input.matches(".*[0-9].*")) {
     		this.txtOutputCorretti.setText("Errore! Inserire solo lettere");
     		this.txtOutputErrati.setText("Errore! Inserire solo lettere");
     		return;
